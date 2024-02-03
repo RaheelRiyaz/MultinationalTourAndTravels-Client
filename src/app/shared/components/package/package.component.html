@@ -1,0 +1,72 @@
+<div
+  class="min-h-[22rem] shadow-xl m-5 max-w-sm bg-white border border-gray-200 rounded-lg dark:bg-gray-800 dark:border-gray-700"
+>
+  <a>
+    <img
+      class="rounded-t-lg w-[100%] object-cover"
+      src="{{ basePath + package.files[0]?.filePath }}"
+      alt=""
+    />
+  </a>
+  <div class="p-5">
+    <a>
+      <h5
+        class="mb-2 text-2xl font-semibold tracking-tight text-dark-200 dark:text-white"
+      >
+        {{ package.packageResponse.name | titlecase }}
+
+        <span
+          class="night-days ms-7 font-medium text-sm md:text-lg text-green-400"
+        >
+          <strong>
+            <i class="fa-regular fa-moon"></i>
+            {{ package.packageResponse.nights }} nights/
+          </strong>
+          <strong> {{ package.packageResponse.days }} days </strong>
+        </span>
+      </h5>
+
+      <p class="text-gray-500 font-semibold">
+        Places Covered <i class="fa-solid fa-location-dot"></i>
+      </p>
+      <div class="flex mt-2">
+        @for (destination of package?.destinations; track $index) {
+        <small class="font-serif text-[cadetblue] text-bold me-2"
+          >{{ destination.name }}
+          <i class="fa-solid fa-angles-right" style="color: cadetblue"></i>
+        </small>
+        }
+      </div>
+      <div class="map mt-2 mb-2">
+        <a
+          class="text-blue-700 cursor-pointer text-sm bg-gray-200 px-2 rounded-md py-1 hover:text-blue-600 hover:bg-gray-300"
+          [href]="
+            getMapUrl(
+              package.packageResponse.longitude,
+              package.packageResponse.latitude
+            )
+          "
+          target="_blank"
+          >View <i class="fa-solid fa-globe"></i
+        ></a>
+      </div>
+
+      <div class="price text-xl">
+        Starting From :-
+        <strong class="text-red-500">{{
+          package.packageResponse.startingPrice | currency : "INR"
+        }}</strong>
+      </div>
+    </a>
+    <p class="my-4 text-sm md:text-lg text-gray-500">
+      {{ package.packageResponse.description | titlecase }}
+    </p>
+    <a
+      routerLink="/packages/{{ package.packageResponse.id }}"
+      routerLinkActive="router-link-active"
+      class="cursor-pointer inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+    >
+      View details
+    </a>
+  </div>
+</div>

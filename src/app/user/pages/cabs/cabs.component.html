@@ -1,0 +1,38 @@
+<app-heading heading="Our Cabs"></app-heading>
+<div class="flex justify-center items-center flex-wrap">
+  @for (cab of cabs; track $index) {
+  <div
+    class="w-full min-h-[32rem] shadow-2xl m-5 max-w-sm bg-white rounded-lg dark:bg-gray-800 dark:border-gray-700"
+  >
+    <a class="image-container">
+      <img
+        class="p-8 rounded-t-lg"
+        src="{{ basePath + cab.filePath }}"
+        alt="Carb image"
+      />
+    </a>
+    <div class="px-5 pb-5">
+      <a href="#">
+        <h2 class="text-2xl font-bold dark:text-white">
+          {{ cab.name | titlecase }}
+          <span
+            class="bg-blue-100 text-blue-800 text-xs font-semibold px-2.5 py-0.5 rounded dark:bg-blue-200 dark:text-blue-800 ms-3"
+            >{{ cab.cabType }}</span
+          >
+        </h2>
+        <p class="my-4 text-lg text-gray-500">
+          {{ cab.description | titlecase }}
+        </p>
+      </a>
+
+      <div class="flex items-center justify-between">
+        <span class="text-2xl font-bold text-gray-900 dark:text-white">{{
+          cab.price | currency : "INR"
+        }}</span>
+      </div>
+    </div>
+  </div>
+  } @empty { @for (item of [1,2,3]; track $index) {
+  <app-skelton></app-skelton>
+  } }
+</div>
