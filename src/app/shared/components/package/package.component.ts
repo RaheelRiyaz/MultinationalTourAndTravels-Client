@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { environment } from '../../../../environments/environment';
+import { DisplayingPackageResponse } from '../../../models/package';
 
 @Component({
   selector: 'app-package',
@@ -7,7 +8,7 @@ import { environment } from '../../../../environments/environment';
   styleUrl: './package.component.scss',
 })
 export class PackageComponent {
-  @Input() package: any;
+  @Input() package!: DisplayingPackageResponse;
   MAP_URL = '';
   basePath = environment.IMAGE_URL;
   ngAfterViewInit(): void {

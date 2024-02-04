@@ -19,6 +19,7 @@ import { FeedBackComponent } from './components/feed-back/feed-back.component';
 import { CabsComponent } from './pages/cabs/cabs.component';
 import { PackagesComponent } from './pages/packages/packages.component';
 import { PackageDetailsComponent } from './pages/package-details/package-details.component';
+import { SocialComponent } from './pages/social/social.component';
 
 @NgModule({
   declarations: [
@@ -35,6 +36,7 @@ import { PackageDetailsComponent } from './pages/package-details/package-details
     CabsComponent,
     PackagesComponent,
     PackageDetailsComponent,
+    SocialComponent,
   ],
   providers: [BaseService],
   imports: [

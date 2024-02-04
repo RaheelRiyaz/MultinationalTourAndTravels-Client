@@ -8,6 +8,7 @@ import { PackageComponent } from './components/package/package.component';
 import { SkeltonComponent } from './components/skelton/skelton.component';
 import { RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
+import { AlertComponent } from './components/alert/alert.component';
 
 const components = [
   HeadingComponent,
@@ -16,11 +17,12 @@ const components = [
   LoadMoreBtnComponent,
   PackageComponent,
   SkeltonComponent,
+  AlertComponent,
 ];
 
 @NgModule({
   declarations: [...components],
-  imports: [CommonModule,RouterModule,FormsModule],
-  exports: [...components,RouterModule],
+  imports: [CommonModule, RouterModule, FormsModule],
+  exports: [...components, RouterModule],
 })
 export class SharedModule {}

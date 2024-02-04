@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { EmitterService } from '../../../services/emiiter.service';
 import { Loader } from '../../../enums/enums';
 import { BaseService } from '../../../services/base.service';
+import { HotelResponse } from '../../../models/hotel';
 
 @Component({
   selector: 'app-hotels',
@@ -13,7 +14,7 @@ export class HotelsComponent {
   pageNo: number = 1;
   pageSize: number = 1;
   hotelLoader: Loader = Loader.Hotel;
-  hotels: any[] = [];
+  hotels: HotelResponse[] = [];
 
   ngOnInit(): void {
     this.getHotels();
@@ -27,7 +28,7 @@ export class HotelsComponent {
 
   getHotels(): void {
     this.service
-      .Fetch<any>(`hotels/hotels-pagewize/${this.pageNo}/${this.pageSize}`)
+      .Fetch<HotelResponse>(`hotels/hotels-pagewize/${this.pageNo}/${this.pageSize}`)
       .subscribe({
         next: (response) => {
           console.log(response);

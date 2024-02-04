@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { BaseService } from '../../../services/base.service';
 import { environment } from '../../../../environments/environment';
+import { CabResponse } from '../../../models/cab';
 
 @Component({
   selector: 'app-cabs',
@@ -8,12 +9,12 @@ import { environment } from '../../../../environments/environment';
   styleUrl: './cabs.component.scss',
 })
 export class CabsComponent {
-  cabs: any[] = [];
+  cabs: CabResponse[] = [];
   basePath = environment.IMAGE_URL;
   constructor(private service: BaseService) {}
 
   ngOnInit(): void {
-    this.service.Fetch<any>('cabs/all-cabs').subscribe({
+    this.service.Fetch<CabResponse>('cabs/all-cabs').subscribe({
       next: (response) => {
         if (response.isSuccess) this.cabs = response.result;
       },

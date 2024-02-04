@@ -171,7 +171,6 @@
       </button>
     </div>
     <div #chatbox id="chatbox" class="p-4 h-80 overflow-y-auto w-full">
-     
       <!-- Chat messages will be displayed here -->
       <!-- <div class="mb-2  text-wrap">
         <p class="bg-gray-200 text-gray-700 rounded-lg py-2 px-4 inline-block">
@@ -188,18 +187,19 @@
       </div>
       }
 
-      <div class="questions">
+       -->
+      <!-- <div class="questions">
         @for (question of questions; track $index) {
         <div class="mb-2">
           <p
             class="bg-gray-200 text-gray-700 rounded-lg py-2 px-4 inline-block"
-            (click)="getAnswer(question.id)"
+            (click)="getAnswer(question.id,'')"
           >
             {{ question.question }}
           </p>
         </div>
-        }
-      </div> -->
+        } -->
+      <!-- </div> -->
     </div>
 
     @if (showLoader) {

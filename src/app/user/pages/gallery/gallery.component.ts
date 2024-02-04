@@ -3,6 +3,7 @@ import { BaseService } from '../../../services/base.service';
 import { environment } from '../../../../environments/environment';
 import { EmitterService } from '../../../services/emiiter.service';
 import { Loader } from '../../../enums/enums';
+import { GalleryResponse } from '../../../models/gallery';
 
 @Component({
   selector: 'app-gallery',
@@ -13,7 +14,7 @@ export class GalleryComponent {
   constructor(private service: BaseService) {}
   pageNo: number = 1;
   pageSize: number = 1;
-  images: any[] = [];
+  images: GalleryResponse[] = [];
   value = Loader.Gallery;
   basePath: string = environment.IMAGE_URL;
   ngOnInit(): void {
@@ -30,7 +31,7 @@ export class GalleryComponent {
 
   getGalleryImages(): void {
     this.service
-      .Fetch<any>(`gallery/pagewize/${this.pageNo}/${this.pageSize}`)
+      .Fetch<GalleryResponse>(`gallery/pagewize/${this.pageNo}/${this.pageSize}`)
       .subscribe({
         next: (response) => {
           console.log(response);

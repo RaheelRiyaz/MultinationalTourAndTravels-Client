@@ -1,4 +1,4 @@
-import { Component, ElementRef, Renderer2, ViewChild } from '@angular/core';
+import { Component, Renderer2, ViewChild } from '@angular/core';
 import { BaseService } from '../../../services/base.service';
 
 @Component({
@@ -11,6 +11,7 @@ export class NavbarComponent {
   ngOnInit(): void {
     this.chatQuestions();
   }
+
   questions: any[] = [];
   showLoader: boolean = false;
   initialQuestions: any[] = [];
@@ -62,7 +63,6 @@ export class NavbarComponent {
   }
 
   insertQuestion(q: any) {
-   
     const div = this.renderer.createElement('div');
     const p = this.renderer.createElement('p');
     const text = this.renderer.createText(q.question);

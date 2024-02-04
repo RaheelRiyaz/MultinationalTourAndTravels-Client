@@ -4,7 +4,11 @@
   <a>
     <img
       class="rounded-t-lg w-[100%] object-cover"
-      src="{{ basePath + package.files[0]?.filePath }}"
+      src="{{
+        basePath + package.files[0].filePath ||
+          basePath + package.files[1].filePath ||
+          basePath + package.files[2].filePath
+      }}"
       alt=""
     />
   </a>
@@ -30,7 +34,7 @@
         Places Covered <i class="fa-solid fa-location-dot"></i>
       </p>
       <div class="flex mt-2">
-        @for (destination of package?.destinations; track $index) {
+        @for (destination of package.destinations; track $index) {
         <small class="font-serif text-[cadetblue] text-bold me-2"
           >{{ destination.name }}
           <i class="fa-solid fa-angles-right" style="color: cadetblue"></i>

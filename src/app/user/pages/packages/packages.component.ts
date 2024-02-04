@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { BaseService } from '../../../services/base.service';
 import { Loader } from '../../../enums/enums';
 import { EmitterService } from '../../../services/emiiter.service';
+import { DisplayingPackageResponse } from '../../../models/package';
 
 @Component({
   selector: 'app-packages',
@@ -10,7 +11,7 @@ import { EmitterService } from '../../../services/emiiter.service';
 })
 export class PackagesComponent {
   constructor(private service: BaseService) {}
-  packages: any[] = [];
+  packages: DisplayingPackageResponse[] = [];
   pageNo: number = 1;
   pageSize: number = 2;
   component = Loader.Package;
@@ -26,7 +27,7 @@ export class PackagesComponent {
 
   fetchPackages(): void {
     this.service
-      .Fetch<any>(
+      .Fetch<DisplayingPackageResponse>(
         `packages/display-packages/pagewize/${this.pageNo}/${this.pageSize}`
       )
       .subscribe({
