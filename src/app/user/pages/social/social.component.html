@@ -1,53 +1,36 @@
-<div class="wrapper position-fixed end-0 top-50">
-    <ul class="social-icons backdrop-blur-md border-l-2 border-y-2">
-      <li>
-        <a
-          class="instagram"
-          target="_blank"
-          href="https://www.instagram.com/pandatourandtravels_?igsh=endtM2JnYWhrbW5o&utm_source=qr "
-          ><i class="text-[#9741d0] bi bi-instagram"></i
-        ></a>
-      </li>
-      <!-- <li>
-        <a
-          class="twitter"
-          target="_blank"
-          href="https://twitter.com/TravelOnKashmir_ar?t=ZHqMcUqZUOe19RJnWdfdmA&s=08"
-          ><i class="text-[#00aced] bx bxl-twitter"></i
-        ></a>
-      </li> -->
-      <li>
-        <a
-          class="facebook"
-          target="_blank"
-          href="https://www.facebook.com/profile.php?id=61555385570719&mibextid=REkXMA"
-          ><i class="text-[#3b5998] bi bi-facebook"></i
-        ></a>
-      </li>
-      <li>
-        <a
-          class="google"
-          target="_blank"
-          href="https://g.page/r/CUyNDNkUI_e9EB0/review"
-          ><i class="bi bi-google"></i
-        ></a>
-      </li>
-      <!-- <li>
-        <a
-          class="snapchat"
-          target="_blank"
-          href="https://www.snapchat.com/add/TravelOnKashmir_ar"
-          ><i class="text-[#fffc00] bx bxl-snapchat"></i
-        ></a>
-      </li> -->
-      <!-- <li>
-        <a
-          class="youtube"
-          target="_blank"
-          href="https://www.youtube.com/channel/UCzpScvxYmT5uTcZChxI1UVA"
-          ><i class="text-[#c00] bx bxl-youtube"></i
-        ></a>
-      </li> -->
-    </ul>
-  </div>
-  
+<div
+  class="flex justify-evenly rounded-tl-md h-auto shadow-xl items-center flex-col social w-10 gap-1 py-2 bg-[#e9e9e9] cursor-pointer fixed right-0 top-[45%] z-50"
+>
+  <a [href]="links.facebbook ? links.facebbook : '/'">
+    <i
+      class="fa-brands text-xl fa-facebook text-blue-900 hover:-translate-y-1 hover:text-blue-800"
+    ></i>
+  </a>
+  <a [href]="links.instagram ? links.instagram : '/'">
+    <i
+      class="fa-brands text-xl fa-instagram text-red-500 hover:-translate-y-1 hover:text-red-600"
+    ></i>
+  </a>
+
+  <a [href]="links.google ? links.google : '/'">
+    <i
+      class="fa-brands text-xl fa-google text-red-500 hover:-translate-y-1 hover:text-red-500"
+    ></i>
+  </a>
+
+  <a [href]="links.youtube ? links.youtube : '/'">
+    <i
+      class="fa-brands text-xl fa-youtube text-red-600 hover:-translate-y-1 hover:text-red-500"
+    ></i>
+  </a>
+
+  <a
+    [href]="'https://wa.me/' + links.whatsapp"
+    target="_blank"
+    class="btn btn-primary"
+  >
+    <i
+      class="fa-brands text-xl fa-whatsapp text-green-400 hover:-translate-y-1 hover:text-green-500"
+    ></i>
+  </a>
+</div>

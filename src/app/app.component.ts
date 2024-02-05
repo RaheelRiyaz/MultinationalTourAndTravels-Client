@@ -11,7 +11,7 @@ import { initFlowbite } from 'flowbite';
   styleUrl: './app.component.scss',
 })
 export class AppComponent {
-  title = 'multinationalTourAndTravels';
+  title = 'Multinational Tour And Travels';
   ngOnInit() {
     initFlowbite();
   }

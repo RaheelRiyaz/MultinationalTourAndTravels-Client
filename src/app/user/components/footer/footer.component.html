@@ -72,6 +72,65 @@
         </div>
       </div>
     </div>
+
+    <app-heading heading="Contact Info"></app-heading>
+
+    <div class="mt-5 p-5 contact-info flex md:flex-row flex-col gap-3 md:gap-10 md:justify-center md:items-center">
+      <div class="flex justify-start items-start gap-2 sm:w-[200px] md:w-fit">
+        <i class="fa-solid fa-location-dot"></i>
+        {{ links.address }}
+      </div>
+      <a
+        [href]="links.facebbook ? links.facebbook : '/'"
+        class="flex justify-center items-center gap-2 w-fit"
+      >
+        <i
+          class="fa-brands text-xl fa-facebook text-blue-900 hover:-translate-y-1 hover:text-blue-800"
+        ></i>
+        facebook
+      </a>
+      <a
+        [href]="links.instagram ? links.instagram : '/'"
+        class="flex justify-center items-center gap-2 w-fit"
+      >
+        <i
+          class="fa-brands text-xl fa-instagram text-red-500 hover:-translate-y-1 hover:text-red-600"
+        ></i>
+        Instagram
+      </a>
+
+      <a
+        [href]="links.google ? links.google : '/'"
+        class="flex justify-center items-center gap-2 w-fit"
+      >
+        <i
+          class="fa-brands text-xl fa-google text-red-500 hover:-translate-y-1 hover:text-red-500"
+        ></i>
+        Google
+      </a>
+
+      <a
+        [href]="links.youtube ? links.youtube : '/'"
+        class="flex justify-center items-center gap-2 w-fit"
+      >
+        <i
+          class="fa-brands text-xl fa-youtube text-red-600 hover:-translate-y-1 hover:text-red-500"
+        ></i>
+        Youtube
+      </a>
+
+      <a
+        class="flex justify-center items-center gap-2 w-fit"
+        [href]="'https://wa.me/' + links.whatsapp"
+        target="_blank"
+        class="btn btn-primary"
+      >
+        <i
+          class="fa-brands text-xl fa-whatsapp text-green-400 hover:-translate-y-1 hover:text-green-500"
+        ></i>
+        Whatsapp
+      </a>
+    </div>
     <hr class="my-6 border-gray-200 sm:mx-auto dark:border-gray-700 lg:my-8" />
     <div class="sm:flex sm:items-center sm:justify-between">
       <span class="text-sm text-gray-500 sm:text-center dark:text-gray-400">
