@@ -324,7 +324,9 @@
       }
     </div>
   </div>
-  <form #enquiryForm="ngForm" (ngSubmit)="sendEnquiry()" 
+  <form
+    #enquiryForm="ngForm"
+    (ngSubmit)="sendEnquiry()"
     class="mt-5 md:fixed md:top-[100px] md:right-[10px] md:mr-3 lg:w-1/4 md:w-1/2 bg-white flex flex-col md:ml-auto w-full md:mt-0 sm:mt-3 border border-gray-200 p-5 rounded-md shadow-2xl"
   >
     <h2 class="text-gray-900 text-lg mb-1 font-medium title-font">
@@ -342,9 +344,19 @@
         [(ngModel)]="bookingrequest.travelDate"
         required
         #travelDate="ngModel"
-        [class.is-invalid]="travelDate.touched && travelDate.invalid"
-        class="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
+        [class.bg-red-50]="travelDate.touched && travelDate.invalid"
+        [class.bg-red-50]="travelDate.touched && travelDate.invalid"
+        [class.border-red-500]="travelDate.touched && travelDate.invalid"
+        [class.text-red-900]="travelDate.touched && travelDate.invalid"
+        [class.placeholder-red-700]="travelDate.touched && travelDate.invalid"
+        class="w-full border bg-white rounded border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
       />
+      @if (travelDate.touched && travelDate.invalid) {
+      <p class="mt-2 text-sm text-red-600 dark:text-red-500">
+        <span class="font-medium">Oops!</span> Please select travel date other
+        than today!
+      </p>
+      }
     </div>
     <div class="relative mb-1">
       <label for="name" class="leading-7 text-sm text-gray-600">Name</label>
@@ -354,10 +366,19 @@
         name="name"
         #name="ngModel"
         [(ngModel)]="bookingrequest.name"
+        [class.bg-red-50]="name.touched && name.invalid"
+        [class.bg-red-50]="name.touched && name.invalid"
+        [class.border-red-500]="name.touched && name.invalid"
+        [class.text-red-900]="name.touched && name.invalid"
+        [class.placeholder-red-700]="name.touched && name.invalid"
         required
-        [class.is-invalid]="name.touched && name.invalid"
         class="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
       />
+      @if (name.touched && name.invalid) {
+      <p class="mt-2 text-sm text-red-600 dark:text-red-500">
+        <span class="font-medium">Oops!</span> Name is required!
+      </p>
+      }
     </div>
     <div class="relative mb-1">
       <label for="email" class="leading-7 text-sm text-gray-600">Email</label>
@@ -367,10 +388,20 @@
         #email="ngModel"
         name="email"
         [(ngModel)]="bookingrequest.email"
+        pattern="^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$"
         required
-        [class.is-invalid]="email.touched && email.invalid"
+        [class.bg-red-50]="email.touched && email.invalid"
+        [class.bg-red-50]="email.touched && email.invalid"
+        [class.border-red-500]="email.touched && email.invalid"
+        [class.text-red-900]="email.touched && email.invalid"
+        [class.placeholder-red-700]="email.touched && email.invalid"
         class="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
       />
+      @if (email.touched && email.invalid) {
+      <p class="mt-2 text-sm text-red-600 dark:text-red-500">
+        <span class="font-medium">Oops!</span> Email is required!
+      </p>
+      }
     </div>
     <div class="relative mb-1">
       <label for="contactNo" class="leading-7 text-sm text-gray-600"
@@ -384,8 +415,17 @@
         class="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
         [(ngModel)]="bookingrequest.contact"
         required
-        [class.is-invalid]="contact.touched && contact.invalid"
+        [class.bg-red-50]="contact.touched && contact.invalid"
+        [class.bg-red-50]="contact.touched && contact.invalid"
+        [class.border-red-500]="contact.touched && contact.invalid"
+        [class.text-red-900]="contact.touched && contact.invalid"
+        [class.placeholder-red-700]="contact.touched && contact.invalid"
       />
+      @if (contact.touched && contact.invalid) {
+      <p class="mt-2 text-sm text-red-600 dark:text-red-500">
+        <span class="font-medium">Oops!</span> Email is required!
+      </p>
+      }
     </div>
     <div class="relative mb-1">
       <label for="noOfAdults" class="leading-7 text-sm text-gray-600"
@@ -399,8 +439,20 @@
         class="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
         [(ngModel)]="bookingrequest.noOfAdults"
         required
-        [class.is-invalid]="noOfAdults.touched && noOfAdults.invalid"
+        [min]="1"
+        [max]="20"
+        [class.bg-red-50]="noOfAdults.touched && noOfAdults.invalid"
+        [class.bg-red-50]="noOfAdults.touched && noOfAdults.invalid"
+        [class.border-red-500]="noOfAdults.touched && noOfAdults.invalid"
+        [class.text-red-900]="noOfAdults.touched && noOfAdults.invalid"
+        [class.placeholder-red-700]="noOfAdults.touched && noOfAdults.invalid"
       />
+      @if (noOfAdults.touched && noOfAdults.invalid) {
+      <p class="mt-2 text-sm text-red-600 dark:text-red-500">
+        <span class="font-medium">Oops!</span> Please select no of adults
+        between 1 and 20!
+      </p>
+      }
     </div>
     <div class="relative mb-1">
       <label for="noOfchilds" class="leading-7 text-sm text-gray-600"
@@ -413,12 +465,26 @@
         name="noOfchilds"
         [(ngModel)]="bookingrequest.noOfChildrens"
         required
-        [class.is-invalid]="noOfChildens.touched && noOfChildens.invalid"
         class="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
+        [min]="1"
+        [max]="20"
+        [class.bg-red-50]="noOfChildens.touched && noOfChildens.invalid"
+        [class.bg-red-50]="noOfChildens.touched && noOfChildens.invalid"
+        [class.border-red-500]="noOfChildens.touched && noOfChildens.invalid"
+        [class.text-red-900]="noOfChildens.touched && noOfChildens.invalid"
+        [class.placeholder-red-700]="
+          noOfChildens.touched && noOfChildens.invalid
+        "
       />
+      @if (noOfChildens.touched && noOfChildens.invalid) {
+      <p class="mt-2 text-sm text-red-600 dark:text-red-500">
+        <span class="font-medium">Oops!</span> Please select no of childrens
+        between 1 and 20!
+      </p>
+      }
     </div>
     <button
-    [disabled]="enquiryForm.invalid"
+      [disabled]="enquiryForm.invalid"
       class="text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded text-lg"
     >
       Send Enquiry

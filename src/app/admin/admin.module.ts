@@ -20,6 +20,8 @@ import { SharedModule } from '../shared/shared.module';
 import { InclusionsComponent } from './pages/package/inclusions/inclusions.component';
 import { ExclusionsComponent } from './pages/package/exclusions/exclusions.component';
 import { ChatbotComponent } from './pages/chatbot/chatbot.component';
+import { LinktreeComponent } from './pages/linktree/linktree.component';
+import { BookingsComponent } from './pages/bookings/bookings.component';
 
 @NgModule({
   declarations: [
@@ -36,6 +38,8 @@ import { ChatbotComponent } from './pages/chatbot/chatbot.component';
     InclusionsComponent,
     ExclusionsComponent,
     ChatbotComponent,
+    LinktreeComponent,
+    BookingsComponent,
   ],
   imports: [
     CommonModule,

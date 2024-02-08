@@ -1,23 +1,10 @@
 <app-heading heading="Our Gallery"></app-heading>
-<!-- 
-<div class="grid grid-cols-2 md:grid-cols-4 gap-4 mt-5">
-  <div class="grid gap-4">
-    <div>
-      <img
-        class="h-96 w-auto rounded-lg"
-        src="{{ basePath + image.filePath }}"
-        alt=""
-      />
-    </div>
-  </div>
-  }
-</div> -->
 
-<div class="grid grid-cols-2 gap-2">
+<div class="flex justify-center items-center flex-wrap gap-2">
   @for (image of images; track $index) {
-  <div>
+  <div class="m-3">
     <img
-      class="h-48 max-w-full rounded-lg"
+      class="md:h-56 h-48 w-48 md:w-56 rounded-lg"
       src="{{ basePath + image.filePath }}"
       alt=""
     />

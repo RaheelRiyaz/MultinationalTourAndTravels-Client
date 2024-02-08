@@ -13,6 +13,8 @@ import { DestinationsComponent } from './pages/package/destinations/destinations
 import { InclusionsComponent } from './pages/package/inclusions/inclusions.component';
 import { ExclusionsComponent } from './pages/package/exclusions/exclusions.component';
 import { ChatbotComponent } from './pages/chatbot/chatbot.component';
+import { LinktreeComponent } from './pages/linktree/linktree.component';
+import { BookingsComponent } from './pages/bookings/bookings.component';
 
 const routes: Routes = [
   {
@@ -39,6 +41,8 @@ const routes: Routes = [
       { path: 'hotels', component: HotelsComponent },
       { path: 'chatbot', component: ChatbotComponent },
       { path: 'cabs', component: CabsComponent },
+      { path: 'linktree', component: LinktreeComponent },
+      { path: 'bookings', component: BookingsComponent },
     ],
   },
 ];
