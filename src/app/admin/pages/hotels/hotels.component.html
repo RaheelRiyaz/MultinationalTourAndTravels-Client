@@ -1,0 +1,195 @@
+<app-heading heading="Our Hotels"></app-heading>
+<button
+  type="button"
+  data-modal-target="default-modal"
+  data-modal-toggle="default-modal"
+  class="py-2.5 px-5 me-2 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700"
+>
+  Add +
+</button>
+
+<div class="flex justify-center items-center flex-wrap">
+  @for(hotel of hotels;track $index){
+  <div
+    class="m-5 max-w-sm bg-white border border-gray-200 rounded-lg shadow-2xl dark:bg-gray-800 dark:border-gray-700 min-h-96 h-auto"
+  >
+    <a>
+      <img
+        class="rounded-md w-full object-cover"
+        src="{{ basePath + hotel.filePath }}"
+        alt="hotel"
+      />
+    </a>
+    <div class="p-5">
+      <a href="#">
+        <h5
+          class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white"
+        >
+          {{ hotel.name }}
+        </h5>
+        @for (star of Array(hotel.stars).fill(0); track $index) {
+        <i class="fa-solid fa-star" style="color: #ffd43b"></i>
+        }
+      </a>
+      <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">
+        {{ hotel.description }}
+      </p>
+      <a
+       (click)="deleteHotel(hotel.hotelId)"
+        class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-red-700 rounded-lg hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+      >
+        Delete
+      </a>
+    </div>
+  </div>
+  }
+</div>
+
+<div
+  id="default-modal"
+  tabindex="-1"
+  aria-hidden="true"
+  class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full"
+>
+  <div class="relative p-4 w-full max-w-2xl max-h-full">
+    <!-- Modal content -->
+    <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
+      <!-- Modal header -->
+      <div
+        class="flex items-center justify-between p-4 md:p-5 border-b rounded-t dark:border-gray-600"
+      >
+        <h3 class="text-xl font-semibold text-gray-900 dark:text-white">
+          Add Hotel
+        </h3>
+        <button
+          type="button"
+          class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white"
+          data-modal-hide="default-modal"
+        >
+          <svg
+            class="w-3 h-3"
+            aria-hidden="true"
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 14 14"
+          >
+            <path
+              stroke="currentColor"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"
+            />
+          </svg>
+          <span class="sr-only">Close modal</span>
+        </button>
+      </div>
+      <!-- Modal body -->
+      <div class="p-4 md:p-5 space-y-4">
+        <form class="max-w-md mx-auto" #form #itineraryForm="ngForm" (ngSubmit)="addHotel(form)">
+          <label
+            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+            for="file_input"
+            >Upload file</label
+          >
+          <input
+            class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
+            aria-describedby="file_input_help"
+            id="file_input"
+            type="file"
+            name="file"
+          />
+          <p
+            class="mt-1 text-sm text-gray-500 dark:text-gray-300"
+            id="file_input_help"
+          >
+            Img, PNG, JPG (MAX. 800x400px).
+          </p>
+
+          <div class="relative z-0 w-full mb-5 group">
+            <input
+              type="text"
+              name="name"
+              id="title"
+              class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+              placeholder=""
+              required
+            />
+            <label
+              for="title"
+              class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+              >Name</label
+            >
+          </div>
+
+          <div class="relative z-0 w-full mb-5 group">
+            <input
+              type="text"
+              name="address"
+              id="address"
+              class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+              placeholder=""
+              required
+            />
+            <label
+              for="address"
+              class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+              >Address</label
+            >
+          </div>
+          <div class="relative z-0 w-full mb-5 group">
+            <select
+              #select
+              id="countries"
+              name="packageType"
+              class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+            >
+              <option disabled selected>Package Type</option>
+              <option [value]="1">Standard</option>
+              <option [value]="2">Deluxe</option>
+              <option [value]="2">Super Deluxe</option>
+            </select>
+          </div>
+
+          <div class="relative z-0 w-full mb-5 group">
+            <select
+              #select
+              id="stars"
+              name="stars"
+              class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+            >
+              <option disabled selected>Stars</option>
+              <option [value]="1">One</option>
+              <option [value]="2">Two</option>
+              <option [value]="3">Three</option>
+              <option [value]="4">Four</option>
+              <option [value]="5">Five</option>
+              <option [value]="6">Six</option>
+            </select>
+          </div>
+          <div class="relative z-0 w-full mb-5 group">
+            <label
+              for="message"
+              class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+              >Description</label
+            >
+            <textarea
+              id="message"
+              rows="4"
+              name="description"
+              class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+              placeholder="Leave a description..."
+            ></textarea>
+          </div>
+          <button
+            type="submit"
+            [disabled]="itineraryForm.invalid"
+            class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+          >
+            Submit
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

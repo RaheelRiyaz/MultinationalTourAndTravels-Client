@@ -7,6 +7,8 @@ import {
 } from '../../../models/package';
 import { ActivatedRoute } from '@angular/router';
 import { environment } from '../../../../environments/environment';
+import { BookingRequest } from '../../../models/booking';
+import { ToastSwal } from '../../../utilis/swal';
 
 @Component({
   selector: 'app-package-details',
@@ -21,8 +23,9 @@ export class PackageDetailsComponent {
     initFlowbite();
   }
   basePath: string = environment.IMAGE_URL;
-  packageDetails!: CompactPackage
+  packageDetails!: CompactPackage;
   costings: PackageCostingResponse[] = [];
+  bookingrequest: BookingRequest = new BookingRequest();
   id!: string;
   ngOnInit(): void {
     this.activatedRoute.params.subscribe({
@@ -64,6 +67,22 @@ export class PackageDetailsComponent {
           if (response.isSuccess) this.costings = response.result;
         },
         error: (err: Error) => {},
+      });
+  }
+  sendEnquiry(): void {
+    this.bookingrequest.packageId = this.id;
+
+    this.service
+      .Post<BookingRequest, any>(this.bookingrequest, 'bookings')
+      .subscribe({
+        next: (response) => {
+          if (response.isSuccess) {
+            ToastSwal.fireSwal(response.message);
+          } else ToastSwal.fireSwal(response.message, false);
+        },
+        error: (err: Error) => {
+          ToastSwal.fireSwal(err.message, false);
+        },
       });
   }
 }

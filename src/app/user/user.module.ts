@@ -20,6 +20,7 @@ import { CabsComponent } from './pages/cabs/cabs.component';
 import { PackagesComponent } from './pages/packages/packages.component';
 import { PackageDetailsComponent } from './pages/package-details/package-details.component';
 import { SocialComponent } from './pages/social/social.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -45,6 +46,7 @@ import { SocialComponent } from './pages/social/social.component';
     RouterModule,
     SharedModule,
     HttpClientModule,
+    FormsModule
   ],
 })
 export class UserModule {}

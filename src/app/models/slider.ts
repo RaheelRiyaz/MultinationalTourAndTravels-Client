@@ -4,3 +4,7 @@ export class SliderResponse {
   slideStatus!: string;
   id!: string;
 }
+
+export class UpdateSlideStatusRequest {
+  constructor(private id: string, private status: number) {}
+}
