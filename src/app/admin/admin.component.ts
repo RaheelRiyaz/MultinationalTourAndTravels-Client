@@ -2,6 +2,7 @@ import { Component, ElementRef, HostListener, Renderer2 } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
 import { initFlowbite } from 'flowbite';
 import { filter } from 'rxjs';
+import { ToastSwal } from '../utilis/swal';
 
 @Component({
   selector: 'app-admin',
@@ -75,5 +76,14 @@ export class AdminComponent {
     } else {
       this.showSidebar();
     }
+  }
+
+  logout(): void {
+    ToastSwal.fireConfirmSwal().then((res) => {
+      if (res.isConfirmed) {
+        localStorage.removeItem('multinationaltourandtravels.com');
+        this.router.navigate(['/login']);
+      }
+    });
   }
 }

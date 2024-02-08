@@ -13,13 +13,17 @@ export class HotelsComponent {
   constructor(private service: BaseService) {}
   pageNo: number = 1;
   pageSize: number = 1;
+  showLoader: boolean = false;
   hotelLoader: Loader = Loader.Hotel;
+  errorMessage: string = '';
   hotels: HotelResponse[] = [];
 
   ngOnInit(): void {
+    this.errorMessage = '';
     this.getHotels();
     EmitterService.hotelEmitter.subscribe({
       next: (res: any) => {
+        this.showLoader = true;
         this.pageNo++;
         this.getHotels();
       },
@@ -28,15 +32,21 @@ export class HotelsComponent {
 
   getHotels(): void {
     this.service
-      .Fetch<HotelResponse>(`hotels/hotels-pagewize/${this.pageNo}/${this.pageSize}`)
+      .Fetch<HotelResponse>(
+        `hotels/hotels-pagewize/${this.pageNo}/${this.pageSize}`
+      )
       .subscribe({
         next: (response) => {
-          console.log(response);
           if (response.isSuccess) {
+            if (response.result.length === 0)
+              this.errorMessage = 'No more hotel found';
             this.hotels = [...this.hotels, ...response.result];
           }
         },
         error: (err: Error) => {},
+        complete: () => {
+          this.showLoader = false;
+        },
       });
   }
 }

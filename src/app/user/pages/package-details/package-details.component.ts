@@ -1,5 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
-import { initFlowbite } from 'flowbite';
+import { initCarousels, initFlowbite } from 'flowbite';
 import { BaseService } from '../../../services/base.service';
 import {
   CompactPackage,
@@ -28,6 +28,8 @@ export class PackageDetailsComponent {
   bookingrequest: BookingRequest = new BookingRequest();
   id!: string;
   ngOnInit(): void {
+    initCarousels();
+    initFlowbite();
     this.activatedRoute.params.subscribe({
       next: (res) => {
         this.id = res['id'];

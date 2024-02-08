@@ -13,12 +13,16 @@ export class PackagesComponent {
   constructor(private service: BaseService) {}
   packages: DisplayingPackageResponse[] = [];
   pageNo: number = 1;
-  pageSize: number = 2;
+  pageSize: number = 1;
+  showLoader: boolean = false;
   component = Loader.Package;
+  errorMessage: string = '';
   ngOnInit(): void {
+    this.errorMessage = '';
     this.fetchPackages();
     EmitterService.packageEmitter.subscribe({
       next: (res: any) => {
+        this.showLoader = true;
         this.pageNo++;
         this.fetchPackages();
       },
@@ -32,12 +36,15 @@ export class PackagesComponent {
       )
       .subscribe({
         next: (response) => {
-          console.log(response);
-
           if (response.isSuccess)
-            this.packages = [...this.packages, ...response.result];
+            if (response.result.length === 0)
+              this.errorMessage = 'No more package found';
+          this.packages = [...this.packages, ...response.result];
         },
         error: (err: Error) => {},
+        complete: () => {
+          this.showLoader = false;
+        },
       });
   }
 }
