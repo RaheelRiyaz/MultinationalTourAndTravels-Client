@@ -14,12 +14,7 @@ export class HotelsComponent {
   constructor(private service: BaseService) {}
   basePath = environment.IMAGE_URL;
   hotels: HotelResponse[] = [];
-  @Input() hotel!: HotelResponse;
 
-  // ngAfterViewInit() {
-  //   this.starsArray = Array(this.hotel.stars).fill(0);
-  // }
-  
   ngOnInit(): void {
     initFlowbite();
     this.getHotels();
@@ -28,6 +23,8 @@ export class HotelsComponent {
   getHotels(): void {
     this.service.Fetch<HotelResponse>('hotels').subscribe({
       next: (response) => {
+        console.log(response.result);
+
         if (response.isSuccess) {
           this.hotels = response.result;
         }
@@ -70,5 +67,10 @@ export class HotelsComponent {
         });
       }
     });
+  }
+
+  starsArry(stars: number): number[] {
+    const array = Array(stars).fill(0);
+    return array;
   }
 }

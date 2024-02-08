@@ -27,7 +27,7 @@
         >
           {{ hotel.name }}
         </h5>
-        @for (star of Array(hotel.stars).fill(0); track $index) {
+        @for (star of starsArry(hotel.stars); track $index) {
         <i class="fa-solid fa-star" style="color: #ffd43b"></i>
         }
       </a>
@@ -86,7 +86,7 @@
       </div>
       <!-- Modal body -->
       <div class="p-4 md:p-5 space-y-4">
-        <form class="max-w-md mx-auto" #form #itineraryForm="ngForm" (ngSubmit)="addHotel(form)">
+        <form class="max-w-md mx-auto" #form #hotelForm="ngForm" (ngSubmit)="addHotel(form)">
           <label
             class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
             for="file_input"
@@ -183,7 +183,7 @@
           </div>
           <button
             type="submit"
-            [disabled]="itineraryForm.invalid"
+            [disabled]="hotelForm.invalid"
             class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
           >
             Submit
