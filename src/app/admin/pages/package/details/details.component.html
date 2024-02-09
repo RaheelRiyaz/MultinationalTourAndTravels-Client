@@ -1,1 +1,45 @@
-<p>details works!</p>
+<form
+  class="max-w-md mx-auto"
+  #destinationForm="ngForm"
+  (ngSubmit)="addDetails()"
+>
+  <div class="relative z-0 w-full mb-5 group">
+    <select
+      id="countries"
+      name="packageType"
+      #type
+      (change)="getHotels(type)"
+      [(ngModel)]="destinationDetailsRequest.packageType"
+      class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+    >
+      <option disabled selected [value]="0">Package Type</option>
+      <option [value]="1">Standard</option>
+      <option [value]="2">Deluxe</option>
+      <option [value]="3">Super Deluxe</option>
+    </select>
+  </div>
+
+  <div class="relative z-0 w-full mb-5 group">
+    <select
+      #select
+      id="stars"
+      [(ngModel)]="destinationDetailsRequest.hotelId"
+      name="packageCostingType"
+      class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+    >
+      <option disabled selected value="">Hotel</option>
+      @for (hotel of hotels; track $index) {
+      <option value="{{ hotel.hotelId }}">
+        {{ hotel.name }}
+      </option>
+      }
+    </select>
+  </div>
+  <button
+    type="submit"
+    [disabled]="destinationForm.invalid"
+    class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+  >
+    Submit
+  </button>
+</form>

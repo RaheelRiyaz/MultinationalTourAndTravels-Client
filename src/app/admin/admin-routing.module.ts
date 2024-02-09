@@ -26,7 +26,7 @@ const routes: Routes = [
         path: 'packages',
         children: [
           { path: '', component: PackagesComponent },
-          { path: 'details/:id', component: DetailsComponent },
+          { path: 'destination-details/:id', component: DetailsComponent },
           { path: 'itineraries/:id', component: ItinerariesComponent },
           { path: 'costings/:id', component: CostingComponent },
           { path: 'destinations/:id', component: DestinationsComponent },
