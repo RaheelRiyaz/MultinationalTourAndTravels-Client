@@ -15,6 +15,7 @@ import { ExclusionsComponent } from './pages/package/exclusions/exclusions.compo
 import { ChatbotComponent } from './pages/chatbot/chatbot.component';
 import { LinktreeComponent } from './pages/linktree/linktree.component';
 import { BookingsComponent } from './pages/bookings/bookings.component';
+import { AccountComponent } from './pages/account/account.component';
 
 const routes: Routes = [
   {
@@ -43,6 +44,7 @@ const routes: Routes = [
       { path: 'cabs', component: CabsComponent },
       { path: 'linktree', component: LinktreeComponent },
       { path: 'bookings', component: BookingsComponent },
+      { path: 'account', component: AccountComponent },
     ],
   },
 ];

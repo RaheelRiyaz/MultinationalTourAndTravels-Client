@@ -3,6 +3,7 @@ import { NavigationEnd, Router } from '@angular/router';
 import { initFlowbite } from 'flowbite';
 import { filter } from 'rxjs';
 import { ToastSwal } from '../utilis/swal';
+import { environment } from '../../environments/environment';
 
 @Component({
   selector: 'app-admin',
@@ -81,7 +82,7 @@ export class AdminComponent {
   logout(): void {
     ToastSwal.fireConfirmSwal().then((res) => {
       if (res.isConfirmed) {
-        localStorage.removeItem('multinationaltourandtravels.com');
+        localStorage.removeItem(environment.TOKEN_Name);
         this.router.navigate(['/login']);
       }
     });

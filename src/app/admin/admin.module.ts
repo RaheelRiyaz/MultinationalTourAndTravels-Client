@@ -4,7 +4,7 @@ import { CommonModule } from '@angular/common';
 import { AdminRoutingModule } from './admin-routing.module';
 import { AdminComponent } from './admin.component';
 import { RouterModule } from '@angular/router';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { PackagesComponent } from './pages/package/packages/packages.component';
 import { HotelsComponent } from './pages/hotels/hotels.component';
@@ -22,6 +22,8 @@ import { ExclusionsComponent } from './pages/package/exclusions/exclusions.compo
 import { ChatbotComponent } from './pages/chatbot/chatbot.component';
 import { LinktreeComponent } from './pages/linktree/linktree.component';
 import { BookingsComponent } from './pages/bookings/bookings.component';
+import { AccountComponent } from './pages/account/account.component';
+import { InterceptorService } from '../services/interceptor.service';
 
 @NgModule({
   declarations: [
@@ -40,6 +42,7 @@ import { BookingsComponent } from './pages/bookings/bookings.component';
     ChatbotComponent,
     LinktreeComponent,
     BookingsComponent,
+    AccountComponent,
   ],
   imports: [
     CommonModule,
@@ -47,8 +50,15 @@ import { BookingsComponent } from './pages/bookings/bookings.component';
     RouterModule,
     HttpClientModule,
     FormsModule,
-    SharedModule
+    SharedModule,
   ],
-  providers: [BaseService],
+  providers: [
+    BaseService,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: InterceptorService,
+      multi: true,
+    },
+  ],
 })
 export class AdminModule {}
