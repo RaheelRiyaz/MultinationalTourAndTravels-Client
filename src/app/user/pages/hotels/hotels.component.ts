@@ -12,7 +12,7 @@ import { HotelResponse } from '../../../models/hotel';
 export class HotelsComponent {
   constructor(private service: BaseService) {}
   pageNo: number = 1;
-  pageSize: number = 1;
+  pageSize: number = 6;
   showLoader: boolean = false;
   hotelLoader: Loader = Loader.Hotel;
   errorMessage: string = '';

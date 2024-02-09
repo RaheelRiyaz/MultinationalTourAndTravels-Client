@@ -45,4 +45,20 @@ export class PackagesComponent {
   navigate(route: string, id: string): void {
     this.router.navigate([route + id]);
   }
+
+  addPackage(form: any): void {
+    const formData = new FormData(form);
+
+    this.service.Post<FormData, number>(formData, 'packages').subscribe({
+      next: (response) => {
+        if (response.isSuccess) {
+          ToastSwal.fireSwal(response.message);
+          this.getPackages();
+        } else ToastSwal.fireSwal(response.message, false);
+      },
+      error: (err: Error) => {
+        ToastSwal.fireSwal(err.message, false);
+      },
+    });
+  }
 }

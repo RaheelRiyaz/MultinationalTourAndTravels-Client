@@ -13,7 +13,7 @@ export class PackagesComponent {
   constructor(private service: BaseService) {}
   packages: DisplayingPackageResponse[] = [];
   pageNo: number = 1;
-  pageSize: number = 1;
+  pageSize: number = 6;
   showLoader: boolean = false;
   component = Loader.Package;
   errorMessage: string = '';

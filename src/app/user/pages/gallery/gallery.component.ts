@@ -13,7 +13,7 @@ import { GalleryResponse } from '../../../models/gallery';
 export class GalleryComponent {
   constructor(private service: BaseService) {}
   pageNo: number = 1;
-  pageSize: number = 1;
+  pageSize: number = 6;
   images: GalleryResponse[] = [];
   value = Loader.Gallery;
   basePath: string = environment.IMAGE_URL;
