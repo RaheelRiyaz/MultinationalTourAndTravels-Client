@@ -63,10 +63,12 @@
       <app-skelton></app-skelton>
       } } @if (showLoader) { @for (item of [1,2]; track $index) {
       <app-skelton></app-skelton>
-      } } @if (errorMessage) {
-      <p class="text-red-600 text-center">{{ errorMessage }}</p>
-      }
+      } }
     </div>
+
+    @if (errorMessage) {
+    <p class="text-red-600 text-center">{{ errorMessage }}</p>
+    }
   </div>
 </section>
-<app-load-more-btn [val]="hotelLoader"></app-load-more-btn>
+<app-load-more-btn [val]="hotelLoader" [show]="isDisabled"></app-load-more-btn>

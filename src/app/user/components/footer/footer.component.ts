@@ -1,14 +1,15 @@
 import { Component } from '@angular/core';
 import { BaseService } from '../../../services/base.service';
 import { LinkTreeResponse } from '../../../models/linktree';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-footer',
   templateUrl: './footer.component.html',
-  styleUrl: './footer.component.scss'
+  styleUrl: './footer.component.scss',
 })
 export class FooterComponent {
-  constructor(private service: BaseService) {}
+  constructor(private service: BaseService, private router: Router) {}
   links: LinkTreeResponse = new LinkTreeResponse();
   ngOnInit(): void {
     this.getlinks();
@@ -21,5 +22,13 @@ export class FooterComponent {
       },
       error: (err: Error) => {},
     });
+  }
+  gotToTop(): void {
+    window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
+  }
+
+  navigateTo(route: string): void {
+    this.gotToTop();
+    this.router.navigate([route]);
   }
 }

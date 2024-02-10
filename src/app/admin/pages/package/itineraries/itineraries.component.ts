@@ -3,6 +3,7 @@ import { BaseService } from '../../../../services/base.service';
 import { ActivatedRoute } from '@angular/router';
 import { ItineraryResponse } from '../../../../models/package';
 import { ToastSwal } from '../../../../utilis/swal';
+import { initFlowbite } from 'flowbite';
 
 @Component({
   selector: 'app-itineraries',
@@ -18,6 +19,7 @@ export class ItinerariesComponent {
   itineraries: ItineraryResponse[] = [];
 
   ngOnInit(): void {
+    initFlowbite();
     this.activatedRoute.params.subscribe({
       next: (res) => (this.id = res['id']),
     });

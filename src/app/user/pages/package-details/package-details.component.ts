@@ -22,6 +22,7 @@ export class PackageDetailsComponent {
   ) {
     initFlowbite();
   }
+  showSpinner: boolean = false;
   basePath: string = environment.IMAGE_URL;
   packageDetails!: CompactPackage;
   costings: PackageCostingResponse[] = [];
@@ -72,6 +73,7 @@ export class PackageDetailsComponent {
       });
   }
   sendEnquiry(): void {
+    this.showSpinner = true;
     this.bookingrequest.packageId = this.id;
 
     this.service
@@ -84,6 +86,10 @@ export class PackageDetailsComponent {
         },
         error: (err: Error) => {
           ToastSwal.fireSwal(err.message, false);
+          this.showSpinner = false;
+        },
+        complete: () => {
+          this.showSpinner = false;
         },
       });
   }

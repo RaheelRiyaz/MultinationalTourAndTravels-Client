@@ -1,11 +1,11 @@
 <footer class="bg-white dark:bg-gray-900">
   <div class="mx-auto w-full max-w-screen-xl p-4 py-6 lg:py-8">
-    <div class="md:flex md:justify-between">
+    <div class="md:flex flex-col gap-3 md:justify-between">
       <div class="mb-6 md:mb-0">
-        <a href="https://flowbite.com/" class="flex items-center">
+        <a routerLink="/" class="flex items-center">
           <img
-            src="../../../../assets/1-removebg-preview.png"
-            class="h-12 me-3"
+            src="../../../../assets/images/WhatsApp Image 2024-02-10 at 3.00.44 PM.jpeg"
+            class="h-12 me-3 logo rounded-full"
             alt="Logo"
           />
           <span
@@ -14,22 +14,30 @@
           >
         </a>
       </div>
-      <div class="grid grid-cols-2 gap-8 sm:gap-6 sm:grid-cols-3">
+      <div>
+        Multinational Tours & Travels, a prominent travel agency based in
+        kashmir, has been providing tour & travel assistance including Holiday
+        Packages, honeymoon tours, and taxis across Jammu & Kashmir.
+      </div>
+      <div class="grid grid-cols-2 gap-8 sm:gap-6 sm:grid-cols-3 mt-4">
         <div>
           <h2
             class="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white"
           >
-            Resources
+            Quick Links
           </h2>
           <ul class="text-gray-500 dark:text-gray-400 font-medium">
             <li class="mb-4">
-              <a href="https://flowbite.com/" class="hover:underline"
-                >Flowbite</a
+              <a (click)="navigateTo('/home')" class="hover:underline">Home</a>
+            </li>
+            <li class="mb-4">
+              <a (click)="navigateTo('/packages')" class="hover:underline"
+                >Packages</a
               >
             </li>
-            <li>
-              <a href="https://tailwindcss.com/" class="hover:underline"
-                >Tailwind CSS</a
+            <li class="mb-4">
+              <a (click)="navigateTo('/hotels')" class="hover:underline"
+                >Hotels</a
               >
             </li>
           </ul>
@@ -38,35 +46,13 @@
           <h2
             class="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white"
           >
-            Follow us
+            Other
           </h2>
           <ul class="text-gray-500 dark:text-gray-400 font-medium">
             <li class="mb-4">
-              <a
-                href="https://github.com/themesberg/flowbite"
-                class="hover:underline"
-                >Github</a
+              <a (click)="navigateTo('/gallery')" class="hover:underline"
+                >Gallery</a
               >
-            </li>
-            <li>
-              <a href="https://discord.gg/4eeurUVvTy" class="hover:underline"
-                >Discord</a
-              >
-            </li>
-          </ul>
-        </div>
-        <div>
-          <h2
-            class="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white"
-          >
-            Legal
-          </h2>
-          <ul class="text-gray-500 dark:text-gray-400 font-medium">
-            <li class="mb-4">
-              <a href="#" class="hover:underline">Privacy Policy</a>
-            </li>
-            <li>
-              <a href="#" class="hover:underline">Terms &amp; Conditions</a>
             </li>
           </ul>
         </div>
@@ -78,7 +64,9 @@
     <div
       class="mt-5 md:p-5 contact-info flex md:flex-row flex-col gap-3 md:gap-10 md:justify-center md:items-center"
     >
-      <div class="flex justify-start items-start gap-2 sm:w-[200px] md:w-fit text-wrap">
+      <div
+        class="flex justify-start items-start gap-2 sm:w-[200px] md:w-fit text-wrap"
+      >
         <i class="fa-solid fa-location-dot"></i>
         {{ links.address }}
       </div>
@@ -137,8 +125,7 @@
     <div class="sm:flex sm:items-center sm:justify-between">
       <span class="text-sm text-gray-500 sm:text-center dark:text-gray-400">
         Designed and developed by
-        <a [href]="'https://wa.me/7006770232'" target="_blank"
-          >
+        <a [href]="'https://wa.me/7006770232'" target="_blank">
           <i class="text-green-400 fa-brands fa-whatsapp"></i>
           Rahil Riyaz</a
         >
@@ -148,6 +135,12 @@
           <i class="fa-solid fa-envelope"></i> rahilriyaz27&#64;gmail.com
         </div>
       </span>
+      <div
+        (click)="gotToTop()"
+        class="go-to-top h-7 w-7 flex justify-center cursor-pointer items-center rounded-full border-2 border-gray-400 shadow-xl"
+      >
+        <i class="fa-solid fa-arrow-up fa-beat-fade"></i>
+      </div>
     </div>
   </div>
 </footer>

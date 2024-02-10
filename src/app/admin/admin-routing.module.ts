@@ -16,6 +16,7 @@ import { ChatbotComponent } from './pages/chatbot/chatbot.component';
 import { LinktreeComponent } from './pages/linktree/linktree.component';
 import { BookingsComponent } from './pages/bookings/bookings.component';
 import { AccountComponent } from './pages/account/account.component';
+import { EditPackageComponent } from './pages/package/edit-package/edit-package.component';
 
 const routes: Routes = [
   {
@@ -27,6 +28,7 @@ const routes: Routes = [
         path: 'packages',
         children: [
           { path: '', component: PackagesComponent },
+          { path: 'edit/:id', component: EditPackageComponent },
           { path: 'destination-details/:id', component: DetailsComponent },
           { path: 'itineraries/:id', component: ItinerariesComponent },
           { path: 'costings/:id', component: CostingComponent },

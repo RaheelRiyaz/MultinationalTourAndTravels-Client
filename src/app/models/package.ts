@@ -38,8 +38,8 @@ export class CompactPackage {
   inclusions!: InclusionResponse[];
   exclusions!: ExclusionsResponse[];
   itineraries!: ItineraryResponse[];
-  files: FileResponse[]=[];
-  destinationsWithHotels: DestinationWithHotelResponse[]=[];
+  files: FileResponse[] = [];
+  destinationsWithHotels: DestinationWithHotelResponse[] = [];
 }
 
 export class InclusionResponse extends BaseClass {
@@ -84,4 +84,19 @@ export class CostingResponse {
   packageId!: string;
   packageCosting!: string;
   rate!: number;
+}
+
+export class UpdatePackageRequest {
+  id!: string;
+  name!: string;
+  description!: string;
+  startingPrice!: number;
+  longitude!: number;
+  latitude!: number;
+  days!: number;
+  nights!: number;
+}
+
+export class PackageResponse extends UpdatePackageRequest{
+
 }

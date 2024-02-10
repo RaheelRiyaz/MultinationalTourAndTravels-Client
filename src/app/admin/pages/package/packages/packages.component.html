@@ -40,28 +40,52 @@
           >Status</span
         >
       </label>
+      <span
+        class="night-days ms-7 font-medium text-sm md:text-lg text-green-400"
+      >
+        <strong>
+          <i class="fa-regular fa-moon"></i>
+          {{ package.nights }} nights/
+        </strong>
+        <strong> {{ package.days }} days </strong>
+      </span>
       <p class="mb-3 font-normal text-gray-700 dark:text-gray-400 mt-2">
         {{ package.description }}
       </p>
-      <p class="text-red-500 font-bold text-xl">Starting From : {{ package.startingPrice | currency : "INR" }}</p>
-      <label
-        for="countries"
-        class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-        >View :-</label
-      >
-      <select
-        #select
-        (change)="navigate(select.value, package.id)"
-        id="countries"
-        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block md:w-52 w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-      >
-        <option disabled selected>View more about</option>
-        <option [value]="'/admin/packages/itineraries/'">Itineraries</option>
-        <option [value]="'/admin/packages/costings/'">Costings</option>
-        <option [value]="'/admin/packages/destinations/'">Destinations</option>
-        <option [value]="'/admin/packages/inclusions/'">Inclusions</option>
-        <option [value]="'/admin/packages/exclusions/'">Exclusions</option>
-      </select>
+      <p class="text-red-500 font-bold text-xl">
+        Starting From : {{ package.startingPrice | currency : "INR" }}
+      </p>
+
+      <div class="flex justify-between items-center">
+        <div>
+          <label
+            for="countries"
+            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+            >View :-</label
+          >
+          <select
+            #select
+            (change)="navigate(select.value, package.id)"
+            id="countries"
+            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block md:w-52 w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+          >
+            <option disabled selected>View more about</option>
+            <option [value]="'/admin/packages/itineraries/'">
+              Itineraries
+            </option>
+            <option [value]="'/admin/packages/costings/'">Costings</option>
+            <option [value]="'/admin/packages/destinations/'">
+              Destinations
+            </option>
+            <option [value]="'/admin/packages/inclusions/'">Inclusions</option>
+            <option [value]="'/admin/packages/exclusions/'">Exclusions</option>
+          </select>
+        </div>
+
+        <button>
+          <i routerLink="edit/{{ package.id }}" class="fa fa-solid fa-pen"></i>
+        </button>
+      </div>
     </div>
   </a>
 

@@ -15,14 +15,15 @@ export class GalleryComponent {
   pageNo: number = 1;
   pageSize: number = 6;
   images: GalleryResponse[] = [];
+  imageSrc: string = '';
+  errorMessage: string = '';
   value = Loader.Gallery;
+  isDisabled: boolean = false;
   basePath: string = environment.IMAGE_URL;
   ngOnInit(): void {
     this.getGalleryImages();
     EmitterService.galleryEmitter.subscribe({
       next: (res: any) => {
-        console.log(res);
-
         this.pageNo++;
         this.getGalleryImages();
       },
@@ -31,12 +32,18 @@ export class GalleryComponent {
 
   getGalleryImages(): void {
     this.service
-      .Fetch<GalleryResponse>(`gallery/pagewize/${this.pageNo}/${this.pageSize}`)
+      .Fetch<GalleryResponse>(
+        `gallery/pagewize/${this.pageNo}/${this.pageSize}`
+      )
       .subscribe({
         next: (response) => {
-          console.log(response);
-          if (response.isSuccess)
+          if (response.isSuccess) {
+            if (response.result.length === 0) {
+              this.isDisabled = true;
+              this.errorMessage = 'No more images found';
+            }
             this.images = [...this.images, ...response.result];
+          }
         },
         error: (err: Error) => {
           console.log(err);

@@ -16,6 +16,7 @@ export class HotelsComponent {
   showLoader: boolean = false;
   hotelLoader: Loader = Loader.Hotel;
   errorMessage: string = '';
+  isDisabled: boolean = false;
   hotels: HotelResponse[] = [];
 
   ngOnInit(): void {
@@ -38,8 +39,10 @@ export class HotelsComponent {
       .subscribe({
         next: (response) => {
           if (response.isSuccess) {
-            if (response.result.length === 0)
+            if (response.result.length === 0) {
+              this.isDisabled = true;
               this.errorMessage = 'No more hotel found';
+            }
             this.hotels = [...this.hotels, ...response.result];
           }
         },

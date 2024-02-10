@@ -9,7 +9,7 @@ import { Loader } from '../../../enums/enums';
 })
 export class LoadMoreBtnComponent {
   @Input() val!: Loader;
-  @Input() show: boolean = true;
+  @Input() show: boolean = false;
   emit(): void {
     if (this.val === Loader.Hotel)
       EmitterService.hotelEmitter.emit('hotel emitter');

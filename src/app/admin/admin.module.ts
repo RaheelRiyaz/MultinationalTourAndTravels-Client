@@ -24,6 +24,7 @@ import { LinktreeComponent } from './pages/linktree/linktree.component';
 import { BookingsComponent } from './pages/bookings/bookings.component';
 import { AccountComponent } from './pages/account/account.component';
 import { InterceptorService } from '../services/interceptor.service';
+import { EditPackageComponent } from './pages/package/edit-package/edit-package.component';
 
 @NgModule({
   declarations: [
@@ -43,6 +44,7 @@ import { InterceptorService } from '../services/interceptor.service';
     LinktreeComponent,
     BookingsComponent,
     AccountComponent,
+    EditPackageComponent,
   ],
   imports: [
     CommonModule,

@@ -17,6 +17,7 @@ export class PackagesComponent {
   showLoader: boolean = false;
   component = Loader.Package;
   errorMessage: string = '';
+  isDisabled: boolean = false;
   ngOnInit(): void {
     this.errorMessage = '';
     this.fetchPackages();
@@ -37,8 +38,10 @@ export class PackagesComponent {
       .subscribe({
         next: (response) => {
           if (response.isSuccess)
-            if (response.result.length === 0)
+            if (response.result.length === 0) {
               this.errorMessage = 'No more package found';
+              this.isDisabled = true;
+            }
           this.packages = [...this.packages, ...response.result];
         },
         error: (err: Error) => {},
