@@ -1,31 +1,18 @@
-<app-alert text="If images are not visible please reload the page"></app-alert>
+<!-- <app-alert text="If images are not visible please reload the page"></app-alert> -->
 <section
   class="flex justify-center items-center flex-wrap md:relative md:right-[200px] top-[0px]"
 >
   <div class="bg w-[100%] md:w-[70%] min-h-screen h-auto">
-    <div
-      id="controls-carousel"
-      class="relative w-[100%] mt-5"
-      data-carousel="sldie"
-    >
-      <!-- Carousel wrapper -->
-      <div
-        class="relative h-56 overflow-hidden rounded-tl-lg rounded-tr-lg md:h-96"
-      >
-        @for (file of packageDetails.files; track $index) {
-
-        <!-- Item 1 -->
-        <div class="hidden duration-700 ease-in-out" data-carousel-item>
-          <img
-            src="{{ basePath + file.filePath }}"
-            class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2"
-            alt="if images ae not visible please reload the page"
-          />
-        </div>
-        }
-      </div>
-      <!-- Slider controls -->
+    @for (img of packageDetails.files; track $index) { @if ($index === imgIndex)
+    {
+    <div class="relative">
+      <img
+        class="md:h-[35rem] w-full md:w-[70rem] rounded-md object-cover"
+        src="{{ basePath + img.filePath }}"
+        alt="image description"
+      />
       <button
+        (click)="previousImage()"
         type="button"
         class="absolute top-0 start-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none"
         data-carousel-prev
@@ -53,6 +40,7 @@
       </button>
       <button
         type="button"
+        (click)="nextImage()"
         class="absolute top-0 end-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none"
         data-carousel-next
       >
@@ -78,6 +66,7 @@
         </span>
       </button>
     </div>
+    } }
 
     <div
       class="details flex flex-wrap p-5 gap-5 border shadow-xl rounded-bl-lg rounded-br-lg"

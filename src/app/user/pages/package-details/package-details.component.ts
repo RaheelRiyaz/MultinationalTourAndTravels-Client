@@ -28,6 +28,7 @@ export class PackageDetailsComponent {
   costings: PackageCostingResponse[] = [];
   bookingrequest: BookingRequest = new BookingRequest();
   id!: string;
+  imgIndex: number = 0;
   ngOnInit(): void {
     initCarousels();
     initFlowbite();
@@ -41,13 +42,14 @@ export class PackageDetailsComponent {
     initFlowbite();
     window.scrollTo(0, 0);
   }
-
+  files: any[] = [];
   getCompactPackageById(): void {
     this.service
       .Find<CompactPackage>(`packages/compactpackage/${this.id}`)
       .subscribe({
         next: (response) => {
           console.log(response);
+          this.files = response.result.files;
           if (response.isSuccess) this.packageDetails = response.result;
         },
         error: (err: Error) => {},
@@ -92,5 +94,14 @@ export class PackageDetailsComponent {
           this.showSpinner = false;
         },
       });
+  }
+
+  nextImage(): void {
+    this.imgIndex++;
+    this.imgIndex > this.files.length - 1 ? (this.imgIndex = 0) : this.imgIndex;
+  }
+  previousImage(): void {
+    this.imgIndex--;
+    this.imgIndex = this.imgIndex < 0 ? this.files.length - 1 : this.imgIndex;
   }
 }

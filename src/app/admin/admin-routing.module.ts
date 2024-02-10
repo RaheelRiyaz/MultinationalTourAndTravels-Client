@@ -17,6 +17,7 @@ import { LinktreeComponent } from './pages/linktree/linktree.component';
 import { BookingsComponent } from './pages/bookings/bookings.component';
 import { AccountComponent } from './pages/account/account.component';
 import { EditPackageComponent } from './pages/package/edit-package/edit-package.component';
+import { ContactComponent } from './pages/contact/contact.component';
 
 const routes: Routes = [
   {
@@ -47,6 +48,7 @@ const routes: Routes = [
       { path: 'linktree', component: LinktreeComponent },
       { path: 'bookings', component: BookingsComponent },
       { path: 'account', component: AccountComponent },
+      { path: 'contacts', component: ContactComponent },
     ],
   },
 ];

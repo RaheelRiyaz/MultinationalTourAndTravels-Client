@@ -4,6 +4,7 @@ import { environment } from '../../../../environments/environment';
 import { EmitterService } from '../../../services/emiiter.service';
 import { Loader } from '../../../enums/enums';
 import { GalleryResponse } from '../../../models/gallery';
+import { initFlowbite } from 'flowbite';
 
 @Component({
   selector: 'app-gallery',
@@ -21,6 +22,7 @@ export class GalleryComponent {
   isDisabled: boolean = false;
   basePath: string = environment.IMAGE_URL;
   ngOnInit(): void {
+    initFlowbite();
     this.getGalleryImages();
     EmitterService.galleryEmitter.subscribe({
       next: (res: any) => {

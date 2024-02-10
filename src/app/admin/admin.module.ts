@@ -25,6 +25,7 @@ import { BookingsComponent } from './pages/bookings/bookings.component';
 import { AccountComponent } from './pages/account/account.component';
 import { InterceptorService } from '../services/interceptor.service';
 import { EditPackageComponent } from './pages/package/edit-package/edit-package.component';
+import { ContactComponent } from './pages/contact/contact.component';
 
 @NgModule({
   declarations: [
@@ -45,6 +46,7 @@ import { EditPackageComponent } from './pages/package/edit-package/edit-package.
     BookingsComponent,
     AccountComponent,
     EditPackageComponent,
+    ContactComponent,
   ],
   imports: [
     CommonModule,
