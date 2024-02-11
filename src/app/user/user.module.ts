@@ -11,7 +11,6 @@ import { SliderComponent } from './pages/slider/slider.component';
 import { SharedModule } from '../shared/shared.module';
 import { GalleryComponent } from './pages/gallery/gallery.component';
 import { HotelsComponent } from './pages/hotels/hotels.component';
-import { ContactUsComponent } from './pages/contact-us/contact-us.component';
 import { BaseService } from '../services/base.service';
 import { HttpClientModule } from '@angular/common/http';
 import { WhyChooseUsComponent } from './components/why-choose-us/why-choose-us.component';
@@ -31,7 +30,6 @@ import { FormsModule } from '@angular/forms';
     SliderComponent,
     GalleryComponent,
     HotelsComponent,
-    ContactUsComponent,
     WhyChooseUsComponent,
     FeedBackComponent,
     CabsComponent,
